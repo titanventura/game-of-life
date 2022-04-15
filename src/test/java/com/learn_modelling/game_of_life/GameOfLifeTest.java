@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.learn_modelling.game_of_life.SeedFactory.blockPattern;
-import static com.learn_modelling.game_of_life.SeedFactory.boatPattern;
+import static com.learn_modelling.game_of_life.PatternSeedFactory.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -13,7 +12,7 @@ public class GameOfLifeTest {
     @Test
     void shouldHaveCellsWhenSeeded() {
         GameOfLife board = new GameOfLife();
-        List<Cell> cells = blockPattern();
+        List<Cell> cells = block();
 
         board.seed(cells);
 
@@ -23,9 +22,9 @@ public class GameOfLifeTest {
     }
 
     @Test
-    void shouldStillHaveLifeWhenSeededWithBlockPattern() {
+    void shouldStillHaveLifeWhenSeededWithBlock() {
         GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = blockPattern();
+        List<Cell> cells = block();
         gameOfLife.seed(cells);
 
         gameOfLife.tick();
@@ -36,14 +35,28 @@ public class GameOfLifeTest {
     }
 
     @Test
-    void shouldStillHaveLifeWhenSeededWithBoatPattern() {
+    void shouldStillHaveLifeWhenSeededWithBoat() {
         GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = boatPattern();
+        List<Cell> cells = boat();
         gameOfLife.seed(cells);
 
         gameOfLife.tick();
 
         for (Cell cell : cells) {
+            assertTrue(gameOfLife.hasLivingCell(cell));
+        }
+    }
+
+    @Test
+    void shouldOscillateWhenSeededWithBlinker() {
+        GameOfLife gameOfLife = new GameOfLife();
+        List<Cell> cells = blinker();
+        List<Cell> expected = blinkerOutput();
+        gameOfLife.seed(cells);
+
+        gameOfLife.tick();
+
+        for (Cell cell : expected) {
             assertTrue(gameOfLife.hasLivingCell(cell));
         }
     }

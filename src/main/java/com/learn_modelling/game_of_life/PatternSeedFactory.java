@@ -3,18 +3,32 @@ package com.learn_modelling.game_of_life;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeedFactory {
-    public static List<Cell> blockPattern() {
+public class PatternSeedFactory {
+    public static List<Cell> block() {
         int[] xs = new int[]{1, 1, 2, 2};
         int[] ys = new int[]{1, 2, 1, 2};
         return generateBoardState(xs, ys);
     }
 
-    public static List<Cell> boatPattern() {
+    public static List<Cell> boat() {
         int[] xs = new int[]{0, 1, 2, 0, 1};
         int[] ys = new int[]{1, 0, 1, 2, 2};
         return generateBoardState(xs, ys);
     }
+
+
+    public static List<Cell> blinker() {
+        int[] xs = new int[]{1, 1, 1};
+        int[] ys = new int[]{1, 0, 2};
+        return generateBoardState(xs, ys);
+    }
+
+    public static List<Cell> blinkerOutput() {
+        int[] xs = new int[]{1, 0, 2};
+        int[] ys = new int[]{1, 1, 1};
+        return generateBoardState(xs, ys);
+    }
+
 
     private static List<Cell> generateBoardState(int[] xs, int[] ys) {
         List<Cell> cells = new ArrayList<>();
