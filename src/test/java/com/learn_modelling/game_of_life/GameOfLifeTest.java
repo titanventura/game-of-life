@@ -12,12 +12,25 @@ public class GameOfLifeTest {
     @Test
     void shouldHaveCellsWhenSeeded() {
         GameOfLife board = new GameOfLife();
-        List<LivingCell> cells = seedForBlockPattern();
+        List<Cell> cells = seedForBlockPattern();
 
         board.seed(cells);
 
-        for (LivingCell cell : cells) {
+        for (Cell cell : cells) {
             assertTrue(board.hasLivingCell(cell));
+        }
+    }
+
+    @Test
+    void shouldStillHaveLifeWhenSeededWithBlockPattern() {
+        GameOfLife gameOfLife = new GameOfLife();
+        List<Cell> cells = seedForBlockPattern();
+        gameOfLife.seed(cells);
+
+        gameOfLife.nextGeneration();
+
+        for (Cell cell : cells) {
+            assertTrue(gameOfLife.hasLivingCell(cell));
         }
     }
 }

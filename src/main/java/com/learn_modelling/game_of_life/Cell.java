@@ -35,4 +35,21 @@ public class Cell {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public List<Cell> allNeighbours() {
+
+        List<Cell> allNeighbours = new ArrayList<>();
+        int[] offsets = new int[]{-1, 0, 1};
+
+        for (Integer x : offsets) {
+            for (Integer y : offsets) {
+                if (x == 0 && y == 0)
+                    continue;
+
+                allNeighbours.add(new Cell(this.x + x, this.y + y));
+            }
+        }
+
+        return allNeighbours;
+    }
 }
