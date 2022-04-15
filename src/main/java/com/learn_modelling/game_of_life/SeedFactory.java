@@ -10,6 +10,12 @@ public class SeedFactory {
         return generateBoardState(xs, ys);
     }
 
+    public static List<Cell> boatPattern() {
+        int[] xs = new int[]{0, 1, 2, 0, 1};
+        int[] ys = new int[]{1, 0, 1, 2, 2};
+        return generateBoardState(xs, ys);
+    }
+
     private static List<Cell> generateBoardState(int[] xs, int[] ys) {
         List<Cell> cells = new ArrayList<>();
         for (int i = 0; i < xs.length; i++) {
