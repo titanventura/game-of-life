@@ -33,7 +33,7 @@ public class GameOfLife {
         return cells.contains(cell);
     }
 
-    public void nextGeneration() {
+    public void tick() {
         nextGeneration = new ArrayList<>();
         visited = new HashSet<>();
 

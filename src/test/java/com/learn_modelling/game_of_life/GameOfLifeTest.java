@@ -27,7 +27,7 @@ public class GameOfLifeTest {
         List<Cell> cells = seedForBlockPattern();
         gameOfLife.seed(cells);
 
-        gameOfLife.nextGeneration();
+        gameOfLife.tick();
 
         for (Cell cell : cells) {
             assertTrue(gameOfLife.hasLivingCell(cell));
