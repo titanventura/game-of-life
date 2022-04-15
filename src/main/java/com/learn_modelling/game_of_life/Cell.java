@@ -1,13 +1,15 @@
 package com.learn_modelling.game_of_life;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class LivingCell {
+public class Cell {
 
     private final int x;
     private final int y;
 
-    public LivingCell(int x, int y) {
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -25,7 +27,7 @@ public class LivingCell {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LivingCell cell = (LivingCell) o;
+        Cell cell = (Cell) o;
         return x == cell.x && y == cell.y;
     }
 

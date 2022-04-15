@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LivingCellTest {
+public class CellTest {
     @Test
     void shouldHaveValuesWhenInitialized() {
-        LivingCell cell = new LivingCell(2, 3);
+        Cell cell = new Cell(2, 3);
 
         assertEquals(cell.getX(), 2);
         assertEquals(cell.getY(), 3);
@@ -15,8 +15,8 @@ public class LivingCellTest {
 
     @Test
     void shouldCompareOneCellToAnother() {
-        LivingCell cell = new LivingCell(2, 3);
-        LivingCell anotherCell = new LivingCell(2, 3);
+        Cell cell = new Cell(2, 3);
+        Cell anotherCell = new Cell(2, 3);
 
         assertEquals(cell, anotherCell);
     }
