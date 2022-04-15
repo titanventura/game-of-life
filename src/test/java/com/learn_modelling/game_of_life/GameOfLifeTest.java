@@ -11,14 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GameOfLifeTest {
     @Test
     void shouldHaveCellsWhenSeeded() {
-        GameOfLife board = new GameOfLife();
+        GameOfLife gameOfLife = new GameOfLife();
         List<Cell> cells = block();
 
-        board.seed(cells);
+        gameOfLife.seed(cells);
 
-        for (Cell cell : cells) {
-            assertTrue(board.hasLivingCell(cell));
-        }
+        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
     }
 
     @Test
@@ -29,9 +27,7 @@ public class GameOfLifeTest {
 
         gameOfLife.tick();
 
-        for (Cell cell : cells) {
-            assertTrue(gameOfLife.hasLivingCell(cell));
-        }
+        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
     }
 
     @Test
@@ -42,9 +38,7 @@ public class GameOfLifeTest {
 
         gameOfLife.tick();
 
-        for (Cell cell : cells) {
-            assertTrue(gameOfLife.hasLivingCell(cell));
-        }
+        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
     }
 
     @Test
@@ -56,9 +50,7 @@ public class GameOfLifeTest {
 
         gameOfLife.tick();
 
-        for (Cell cell : expected) {
-            assertTrue(gameOfLife.hasLivingCell(cell));
-        }
+        assertTrue(expected.stream().allMatch(gameOfLife::hasLivingCell));
     }
 
     @Test
@@ -70,8 +62,6 @@ public class GameOfLifeTest {
 
         gameOfLife.tick();
 
-        for (Cell cell : expected) {
-            assertTrue(gameOfLife.hasLivingCell(cell));
-        }
+        assertTrue(expected.stream().allMatch(gameOfLife::hasLivingCell));
     }
 }
