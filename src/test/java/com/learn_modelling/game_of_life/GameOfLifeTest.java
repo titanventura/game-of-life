@@ -60,4 +60,18 @@ public class GameOfLifeTest {
             assertTrue(gameOfLife.hasLivingCell(cell));
         }
     }
+
+    @Test
+    void shouldOscillateInTwoPhaseWhenSeededWithToad() {
+        GameOfLife gameOfLife = new GameOfLife();
+        List<Cell> cells = toad();
+        List<Cell> expected = toadOutput();
+        gameOfLife.seed(cells);
+
+        gameOfLife.tick();
+
+        for (Cell cell : expected) {
+            assertTrue(gameOfLife.hasLivingCell(cell));
+        }
+    }
 }

@@ -29,6 +29,18 @@ public class PatternSeedFactory {
         return generateBoardState(xs, ys);
     }
 
+    public static List<Cell> toad() {
+        int[] xs = new int[]{1, 1, 1, 2, 2, 2};
+        int[] ys = new int[]{1, 2, 3, 2, 3, 4};
+        return generateBoardState(xs, ys);
+    }
+
+    public static List<Cell> toadOutput() {
+        int[] xs = new int[]{0, 1, 1, 2, 2, 3};
+        int[] ys = new int[]{2, 1, 4, 1, 4, 3};
+        return generateBoardState(xs, ys);
+    }
+
 
     private static List<Cell> generateBoardState(int[] xs, int[] ys) {
         List<Cell> cells = new ArrayList<>();
