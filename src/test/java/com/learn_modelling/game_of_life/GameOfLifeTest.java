@@ -2,66 +2,58 @@ package com.learn_modelling.game_of_life;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static com.learn_modelling.game_of_life.PatternSeedFactory.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class GameOfLifeTest {
     @Test
     void shouldHaveCellsWhenSeeded() {
-        GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = block();
+        GameState seed = block();
+        GameOfLife gameOfLife = new GameOfLife(seed);
 
-        gameOfLife.seed(cells);
-
-        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
+        assertEquals(seed, gameOfLife.state());
     }
 
     @Test
     void shouldStillHaveLifeWhenSeededWithBlock() {
-        GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = block();
-        gameOfLife.seed(cells);
+        GameState seed = block();
+        GameOfLife gameOfLife = new GameOfLife(seed);
 
         gameOfLife.tick();
 
-        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
+        assertEquals(seed, gameOfLife.state());
     }
 
     @Test
     void shouldStillHaveLifeWhenSeededWithBoat() {
-        GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = boat();
-        gameOfLife.seed(cells);
+        GameState seed = boat();
+        GameOfLife gameOfLife = new GameOfLife(seed);
 
         gameOfLife.tick();
 
-        assertTrue(cells.stream().allMatch(gameOfLife::hasLivingCell));
+        assertEquals(seed, gameOfLife.state());
     }
 
     @Test
     void shouldOscillateWhenSeededWithBlinker() {
-        GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = blinker();
-        List<Cell> expected = blinkerOutput();
-        gameOfLife.seed(cells);
+        GameState seed = blinker();
+        GameOfLife gameOfLife = new GameOfLife(seed);
+        GameState expected = blinkerOutput();
 
         gameOfLife.tick();
 
-        assertTrue(expected.stream().allMatch(gameOfLife::hasLivingCell));
+        assertEquals(expected, gameOfLife.state());
     }
 
     @Test
     void shouldOscillateInTwoPhaseWhenSeededWithToad() {
-        GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = toad();
-        List<Cell> expected = toadOutput();
-        gameOfLife.seed(cells);
+        GameState seed = toad();
+        GameOfLife gameOfLife = new GameOfLife(seed);
+        GameState expected = toadOutput();
 
         gameOfLife.tick();
 
-        assertTrue(expected.stream().allMatch(gameOfLife::hasLivingCell));
+        assertEquals(expected, gameOfLife.state());
     }
 }

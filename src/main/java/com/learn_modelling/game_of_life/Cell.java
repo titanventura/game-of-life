@@ -52,4 +52,12 @@ public class Cell {
 
         return allNeighbours;
     }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
