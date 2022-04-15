@@ -14,7 +14,7 @@ public class GameOfLife {
 
     public GameOfLife() {
         this.cells = new ArrayList<>();
-        resetTick();
+        resetBoardForNextTick();
     }
 
     public void seed(List<Cell> seedCells) {
@@ -28,7 +28,7 @@ public class GameOfLife {
     public void tick() {
         initTick();
         updateGeneration();
-        resetTick();
+        resetBoardForNextTick();
     }
 
     private void initTick() {
@@ -45,13 +45,13 @@ public class GameOfLife {
         this.cells = nextGeneration;
     }
 
-    private void resetTick() {
+    private void resetBoardForNextTick() {
         this.nextGeneration = null;
         this.visited = null;
     }
 
     private void updateCell(Cell cell) {
-        if (this.visited.contains(cell)) return;
+        if (visited(cell)) return;
 
         this.visited.add(cell);
 
@@ -64,6 +64,10 @@ public class GameOfLife {
         }
 
         if (noOfLivingNeighbours == 2 || noOfLivingNeighbours == 3) this.nextGeneration.add(cell);
+    }
+
+    private boolean visited(Cell cell) {
+        return this.visited.contains(cell);
     }
 
     private List<Cell> filterLivingCells(List<Cell> cells) {
