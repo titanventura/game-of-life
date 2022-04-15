@@ -69,6 +69,6 @@ public class GameOfLife {
     }
 
     private List<Cell> filterLivingCells(List<Cell> cells) {
-        return cells.stream().filter(cell -> this.hasLivingCell(cell)).collect(Collectors.toList());
+        return cells.stream().filter(this::hasLivingCell).collect(Collectors.toList());
     }
 }
