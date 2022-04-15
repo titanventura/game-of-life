@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.learn_modelling.game_of_life.GameOfLife.seedForBlockPattern;
+import static com.learn_modelling.game_of_life.SeedFactory.blockPattern;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -12,7 +12,7 @@ public class GameOfLifeTest {
     @Test
     void shouldHaveCellsWhenSeeded() {
         GameOfLife board = new GameOfLife();
-        List<Cell> cells = seedForBlockPattern();
+        List<Cell> cells = blockPattern();
 
         board.seed(cells);
 
@@ -24,7 +24,7 @@ public class GameOfLifeTest {
     @Test
     void shouldStillHaveLifeWhenSeededWithBlockPattern() {
         GameOfLife gameOfLife = new GameOfLife();
-        List<Cell> cells = seedForBlockPattern();
+        List<Cell> cells = blockPattern();
         gameOfLife.seed(cells);
 
         gameOfLife.tick();

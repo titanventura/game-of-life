@@ -11,15 +11,7 @@ public class GameOfLife {
     private List<Cell> nextGeneration;
     private HashSet<Cell> visited;
 
-    public static List<Cell> seedForBlockPattern() {
-        int[] xs = new int[]{1, 1, 2, 2};
-        int[] ys = new int[]{1, 2, 1, 2};
-        List<Cell> cells = new ArrayList<>();
-        for (int i = 0; i < xs.length; i++) {
-            cells.add(new Cell(xs[i], ys[i]));
-        }
-        return cells;
-    }
+
 
     public GameOfLife() {
         this.cells = new ArrayList<>();
